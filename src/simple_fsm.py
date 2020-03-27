@@ -53,16 +53,16 @@ class D(State):
 def turnOnStateMachine(request):
 
     sm = StateMachine(outcomes=['success'])
-    sm.userdata.sm_input = request.direction
+    sm.userdata.direction = request.direction
     with sm:
         StateMachine.add('A', A(), transitions={'1': 'B', '0': 'D'},
-                             remapping={'input': 'sm_input', 'output': ''})
+                             remapping={'input': 'direction', 'output': ''})
         StateMachine.add('B', B(), transitions={'1': 'C', '0': 'success'},
-                             remapping={'input': 'sm_input', 'output': ''})
+                             remapping={'input': 'direction', 'output': ''})
         StateMachine.add('C', C(), transitions={'1': 'D', '0': 'B'},
-                             remapping={'input': 'sm_input', 'output': ''})
+                             remapping={'input': 'direction', 'output': ''})
         StateMachine.add('D', D(), transitions={'1': 'success', '0': 'C'},
-                             remapping={'input': 'sm_input', 'output': ''})
+                             remapping={'input': 'direction', 'output': ''})
 
     ## sis = smach_os.IntrospectionServer('server_name', sm, '/SM_ROOT')
     ## sis.start()
