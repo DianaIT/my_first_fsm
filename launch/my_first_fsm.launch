@@ -1,0 +1,7 @@
+<launch>
+    <node
+        name="my_first_fsm"
+        pkg="my_first_fsm"
+        type="simple_fsm.py"
+        output="screen" />
+</launch>
